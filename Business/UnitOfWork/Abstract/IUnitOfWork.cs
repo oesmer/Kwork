@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace DataAccess.UnitOfWork.Abstract
+namespace Business.UnitOfWork.Abstract
 {
     public interface IUnitOfWork : IAsyncDisposable
     {

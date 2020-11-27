@@ -1,18 +1,22 @@
-﻿using DataAccess.Abstact;
+﻿using Business.Concrete.EntityManagers;
+using Business.UnitOfWork.Abstract;
+using DataAccess.Abstact;
 using DataAccess.Concrete.EfCore.Context;
 using DataAccess.Concrete.EfCore.Repositories;
-using DataAccess.UnitOfWork.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.UnitOfWork.Concrete
+namespace Business.UnitOfWork.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
-
+        public UnitOfWork(AppDbContext context)
+        {
+            _context = context;
+        }
 
         private EfBirimKartRepository _birimKartRepository;
         private EfCariKartRepository _carikartRepository;
@@ -29,12 +33,9 @@ namespace DataAccess.UnitOfWork.Concrete
         private EfTediyeDekontRepository _tediyeDekontRepository;
         private EfUserRepository _userRepository;
 
-        public UnitOfWork(AppDbContext context)
-        {
-            _context = context;
-        }
 
-        public IBirimKartRepository BirimKarts => _birimKartRepository ?? new EfBirimKartRepository(_context);
+
+        public IBirimKartRepository BirimKarts => _birimKartRepository ?? (_birimKartRepository = new EfBirimKartRepository(_context));
         public ICariKartRepository CariKarts => _carikartRepository ?? new EfCariKartRepository(_context);
         public IDepartmanKartRepository DepartmanKarts => _departmanKartRepository ?? new EfDepartmanKartRepository(_context);
         public IKasaKartRepository KasaKarts => _kasaKartRepository ?? new EfKasaKartRepository(_context);
