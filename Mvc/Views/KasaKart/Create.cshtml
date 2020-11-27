@@ -1,0 +1,41 @@
+﻿@model Kwork.Entities.Concrete.KasaKart
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="row">
+    <div class="col-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="KasaAdi" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="KasaAdi" class="form-control-sm" />
+                    <span asp-validation-for="KasaAdi" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Aciklama" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="Aciklama" class="form-control-sm" />
+                    <span asp-validation-for="Aciklama" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="KasaBakiye" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="KasaBakiye" class="form-control-sm" />
+                    <span asp-validation-for="KasaBakiye" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <a asp-action="Index" class="btn btn-success btn-xs">Back to List</a>
+                </div>
+                <div class="col-sm-8">
+                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

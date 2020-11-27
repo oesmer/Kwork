@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Kwork.Entities.Concrete.MasrafDekont>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="table-responsive">
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary btn-xs">Yeni Dekont</a>
+    </p>
+    <table class="mb-0 table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Tarih
+                </th>
+
+                <th>
+                    Masraf Tipi
+                </th>
+                <th>
+                    Açıklama
+                </th>
+                <th>
+                    Birim Fiyat
+                </th>
+                <th>
+                    Miktar
+                </th>
+                <th>
+                    Birim
+                </th>
+                <th>
+                    Toplam Tutar
+                </th>
+                <th>
+                    KDV
+                </th>
+                <th>
+                    Genel Toplam
+                </th>
+                <th>
+                    Kasa
+                </th>
+                <th>
+                    Kasa Bakiye
+                </th>
+
+
+
+                <th class="lastcolumn"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DekontTarihi)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MasrafKart.MasrafAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirimFiyat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Miktar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirimKart.BirimAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ToplamTutar)
+                    </td>
+                    <td>
+                        @if (item.KDVID == 0)
+                        {
+                            <span>Dahil</span>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.KDV)
+                        }
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenelToplam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KasaKart.KasaAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KasaBakiye)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="pe-7s-note btn-primary"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="pe-7s-note2 btn-info"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="pe-7s-junk btn-danger"> </i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
