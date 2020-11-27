@@ -1,8 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Concrete.EntityManagers;
+using Business.UOW.Abstract;
+using Business.UOW.Concrete;
 using DataAccess.Concrete.EfCore.Context;
-using DataAccess.UnitOfWork.Abstract;
-using DataAccess.UnitOfWork.Concrete;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

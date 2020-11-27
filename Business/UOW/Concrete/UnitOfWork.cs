@@ -1,14 +1,10 @@
-﻿using Business.Concrete.EntityManagers;
-using Business.UnitOfWork.Abstract;
+﻿using Business.UOW.Abstract;
 using DataAccess.Abstact;
 using DataAccess.Concrete.EfCore.Context;
 using DataAccess.Concrete.EfCore.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.UnitOfWork.Concrete
+namespace Business.UOW.Concrete
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -35,7 +31,7 @@ namespace Business.UnitOfWork.Concrete
 
 
 
-        public IBirimKartRepository BirimKarts => _birimKartRepository ?? (_birimKartRepository = new EfBirimKartRepository(_context));
+        public IBirimKartRepository BirimKarts => _birimKartRepository ?? new EfBirimKartRepository(_context);
         public ICariKartRepository CariKarts => _carikartRepository ?? new EfCariKartRepository(_context);
         public IDepartmanKartRepository DepartmanKarts => _departmanKartRepository ?? new EfDepartmanKartRepository(_context);
         public IKasaKartRepository KasaKarts => _kasaKartRepository ?? new EfKasaKartRepository(_context);

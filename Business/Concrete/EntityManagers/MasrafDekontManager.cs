@@ -1,8 +1,8 @@
 ﻿using Business.Abstract;
+using Business.UOW.Abstract;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.ComplexTypes;
 using Core.Utilities.Results.Concrete;
-using DataAccess.UnitOfWork.Concrete;
 using Kwork.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,8 +12,8 @@ namespace Business.Concrete.EntityManagers
 {
     public class MasrafDekontManager:IMasrafDekontService
     {
-        private readonly UnitOfWork _unitOfWork;
-        public MasrafDekontManager(UnitOfWork unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+        public MasrafDekontManager(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
