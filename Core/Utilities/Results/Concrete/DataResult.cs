@@ -26,9 +26,9 @@ namespace Core.Utilities.Results.Concrete
             Data = data;
             Exception = exception;
         }
-        public T Data { get; }
         public ResultStatus ResultStatus { get; }
         public string Message { get; }
         public Exception Exception { get; }
+        public T Data { get; }
     }
 }
